@@ -3,7 +3,6 @@ import java.nio.file.Paths
 
 import org.apache.http.client.methods.{CloseableHttpResponse, HttpGet}
 import org.apache.http.impl.client.HttpClientBuilder
-import org.apache.http.util.EntityUtils
 
 /**
   * Created by Karesz on 2017.12.05..
@@ -45,14 +44,9 @@ object ScalaApacheHttpClient {
 
   def getResponse(response: CloseableHttpResponse): String = {
     try {
-      if (response.getStatusLine == null) {
-        return ""
-      }
-
       val status = response.getStatusLine.getStatusCode
-      val body = EntityUtils.toString(response.getEntity, StandardCharsets.UTF_8)
       // Check HTTP status code
-      body
+      EntityUtils.toString(response.getEntity, StandardCharsets.UTF_8)
     } finally {
       response.close()
     }
