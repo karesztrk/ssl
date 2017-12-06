@@ -1,0 +1,6 @@
+#build files
+/target/ 
+/.idea/ 
+/project/target/
+/project/project/
+/out/production/
